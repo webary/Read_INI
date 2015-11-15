@@ -1,22 +1,22 @@
 #include "INI_Util.hpp"
-#include <ctime>
+#include <ctime>  //clock()
 
 int main() {
-    int start = clock();
-    INI_Util ini("set.ini");
-    cout<<"¹¹Ôì¸ÃÀà¶ÔÏó²¢¶ÁÈ¡ÅäÖÃÎÄ¼þºÄÊ±£º"<<clock()-start<<endl;
+    int t_start = clock();
+    INI_Util ini("set.ini");  //æž„é€ ä¸€ä¸ªè¯»å–iniæ–‡ä»¶çš„å¯¹è±¡ï¼Œæ‰“å¼€åä¸ºâ€œset.iniâ€çš„é…ç½®æ–‡ä»¶
+    cout<<"æž„é€ è¯¥ç±»å¯¹è±¡å¹¶è¯»å–é…ç½®æ–‡ä»¶è€—æ—¶ï¼š"<<clock()-t_start<<endl;
 
-    ini.setDefaultNode("MyCNN");
-    for(int i=0; i<10000; ++i) {	//Windows £º40ms
-        string find = ini.getRecord("key_name");
+    ini.setDefaultNode("MyCNN");  //è®¾ç½®é»˜è®¤æœç´¢ç»“ç‚¹
+    for(int i=0; i<10000; ++i) {
+        string find = ini.getRecord("key_name"); //èŽ·å–è¯¥è®°å½•
         ini.getRecord(find);
         //cout<<find<<" = "<<ini.getRecord(find)<<endl;
         //cout<<ini.getState();
     }
-    cout<<"Ö´ÐÐ2W´Î²éÕÒºÄÊ±£º"<<clock()-start<<endl;
+    cout<<"æ‰§è¡Œ2Wæ¬¡æŸ¥æ‰¾è€—æ—¶ï¼š"<<clock()-t_start<<endl;
 
-    cout<<"\nÅäÖÃÎÄ¼þËùÓÐÄÚÈÝÈçÏÂ"<<endl;
-    ini.showAllRecord();
+    cout<<"\né…ç½®æ–‡ä»¶æ‰€æœ‰å†…å®¹å¦‚ä¸‹"<<endl;
+    ini.showAllRecord();  //æ˜¾ç¤ºæ‰€æœ‰è®°å½•
     cin.get();
     return 0;
 }
